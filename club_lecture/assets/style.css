@@ -1,0 +1,702 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/club_lecture/assets/ordi-livre.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+    width: 100%;
+    padding: 15px 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#user_nom {
+    font-size: 1rem;
+    color: #5c3d2e;
+}
+
+/* ========== MAIN ========== */
+main {
+    margin-top: 80px;
+    padding: 30px;
+    flex: 1;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(255,255,255,0.9);
+    margin-top: auto;
+}
+
+/* ========== LIENS ========== */
+a {
+    color: #5c3d2e;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #a0522d;
+}
+
+/* ========== BOUTONS ========== */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #5c3d2e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #a0522d;
+    color: white;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    background-color: #5c3d2e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.btn-small:hover {
+    background-color: #a0522d;
+}
+
+.btn-retour {
+    display: inline-block;
+    margin-top: 10px;
+    color: #5c3d2e;
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
+
+/* ========== LOGIN / REGISTER ========== */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    background-color: rgba(255, 255, 255, 0.92);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: #5c3d2e;
+}
+
+.login-box label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #5c3d2e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #a0522d;
+}
+
+.erreur {
+    color: red;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* ========== DASHBOARD ========== */
+.dashboard {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.dashboard-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.dashboard-links a {
+    background-color: rgba(255,255,255,0.85);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #5c3d2e;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.dashboard-links a:hover {
+    background-color: white;
+}
+
+.section-titre {
+    margin: 30px 0 15px;
+    font-size: 1.2rem;
+    color: #5c3d2e;
+}
+
+/* ========== LIVRES LISTE ========== */
+.liste-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.liste_livre {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255,255,255,0.88);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 15%;
+    min-width: 200px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s;
+}
+
+.liste_livre:hover {
+    transform: scale(1.03);
+}
+
+.liste_livre img {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.liste_livre-info h3 {
+    font-size: 0.9rem;
+    color: #5c3d2e;
+    margin-bottom: 5px;
+}
+
+.liste_livre-info .auteur {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.liste_livre-info .date {
+    font-size: 0.75rem;
+    color: #aaa;
+}
+
+.liste_livre-info .voir-plus {
+    font-size: 0.75rem;
+    color: #a0522d;
+    margin-top: 8px;
+    display: block;
+}
+
+/* ========== LIVRE DETAIL ========== */
+.detail_livre {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255,255,255,0.88);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin: 0 auto 30px;
+}
+
+.detail_livre-info {
+    flex: 1;
+    padding-right: 30px;
+}
+
+.detail_livre-info h2 {
+    font-size: 1.8rem;
+    color: #5c3d2e;
+    margin-bottom: 10px;
+}
+
+.detail_auteur {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.detail_desc {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.detail_meta {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.detail_actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.detail_couverture {
+    width: 40%;
+    max-width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ========== AVIS ========== */
+.avis-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.avis-container h3 {
+    color: #5c3d2e;
+    margin-bottom: 20px;
+}
+
+.avis {
+    background-color: rgba(255,255,255,0.88);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.avis-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.avis-auteur {
+    font-weight: bold;
+    color: #5c3d2e;
+}
+
+.avis-note {
+    color: #a0522d;
+}
+
+.avis-spoiler {
+    background-color: #ffe0b2;
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.avis-contenu {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.avis-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 0.85rem;
+}
+
+/* ========== PROGRESSION ========== */
+.progression-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.88);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.progression-container h2 {
+    color: #5c3d2e;
+    margin-bottom: 20px;
+}
+
+.progression-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.progression-input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* ========== PROGRESS BAR ========== */
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 10px;
+    margin: 10px 0;
+}
+
+.progress-fill {
+    background-color: #5c3d2e;
+    height: 10px;
+    border-radius: 5px;
+    transition: width 0.3s;
+}
+
+/* ========== SESSIONS LISTE ========== */
+.liste_session {
+    display: flex;
+    background-color: rgba(255,255,255,0.88);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+
+.liste_session:hover {
+    transform: scale(1.01);
+}
+
+.liste_session-info h3 {
+    color: #5c3d2e;
+    margin-bottom: 8px;
+}
+
+.liste_session-livre {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.liste_session-meta {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+.liste_session-statut {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+
+/* ========== SESSION DETAIL ========== */
+.detail_session {
+    display: flex;
+    gap: 30px;
+    background-color: rgba(255,255,255,0.88);
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.detail_session-info {
+    flex: 1;
+}
+
+.detail_session-info h2 {
+    color: #5c3d2e;
+    margin-bottom: 15px;
+}
+
+.detail_session-livre {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.detail_session-meta {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.detail_session-inscrits {
+    min-width: 200px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.detail_session-inscrits h3 {
+    color: #5c3d2e;
+    margin-bottom: 15px;
+}
+
+.detail_session-inscrits ul {
+    list-style: none;
+}
+
+.detail_session-inscrits li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+/* ========== STATUTS ========== */
+.planifiée { background-color: #e3f2fd; color: #1565c0; }
+.en\ cours { background-color: #e8f5e9; color: #2e7d32; }
+.terminée { background-color: #fce4ec; color: #c62828; }
+
+/* ========== FORMULAIRES ========== */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-container h2 {
+    color: #5c3d2e;
+    margin-bottom: 20px;
+}
+
+.form-card {
+    background-color: rgba(255,255,255,0.88);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-card label {
+    font-weight: bold;
+    color: #555;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* ========== MEMBRES ========== */
+.membres-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.membre-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255,255,255,0.88);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.membre-info h3 {
+    color: #5c3d2e;
+    margin-bottom: 5px;
+}
+
+.membre-email {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.membre-date {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.membre-role {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* ========== ROLE BADGE ========== */
+.role-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.role-badge.admin {
+    background-color: #fce4ec;
+    color: #c62828;
+}
+
+.role-badge.moderateur {
+    background-color: #e3f2fd;
+    color: #1565c0;
+}
+
+.role-badge.membre {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* ========== PROFIL ========== */
+.profil-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.profil-card {
+    background-color: rgba(255,255,255,0.88);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.profil-card h2 {
+    color: #5c3d2e;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.profil-email {
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.profil-date {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-top: 10px;
+}
+
+.profil-section {
+    background-color: rgba(255,255,255,0.88);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.profil-section h3 {
+    color: #5c3d2e;
+    margin-bottom: 20px;
+}
+
+/* ========== LECTURES GRID ========== */
+.lectures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.lecture-card {
+    background-color: rgba(255,255,255,0.7);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    text-decoration: none;
+    color: #333;
+}
+
+.lecture-card h4 {
+    color: #5c3d2e;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* ========== UTILITAIRES ========== */
+.vide {
+    color: #aaa;
+    font-style: italic;
+}
